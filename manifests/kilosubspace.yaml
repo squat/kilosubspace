@@ -35,7 +35,7 @@ spec:
         command:
         - /bin/bash
         - -c
-        - export SUBSPACE_IPV4_GW=$(cat /etc/resolv.conf | grep nameserver | head -n 1 | awk '{print $2}') && mkdir -p /data/wireguard/{clients,peers} && kilosubspace findkey SUBSPACE_HTTP_HOST:SUBSPACE_LISTENPORT > /data/wireguard/server.public && subspace --http-addr=$SUBSPACE_HTTP_ADDR --http-host=$SUBSPACE_HTTP_HOST --http-insecure=$SUBSPACE_HTTP_INSECURE --letsencrypt=$SUBSPACE_LETSENCRYPT --debug
+        - export SUBSPACE_IPV4_GW=$(cat /etc/resolv.conf | grep nameserver | head -n 1 | awk '{print $2}') && mkdir -p /data/wireguard/{clients,peers} && kilosubspace findkey $SUBSPACE_HTTP_HOST:$SUBSPACE_LISTENPORT > /data/wireguard/server.public && subspace --http-addr=$SUBSPACE_HTTP_ADDR --http-host=$SUBSPACE_HTTP_HOST --http-insecure=$SUBSPACE_HTTP_INSECURE --letsencrypt=$SUBSPACE_LETSENCRYPT --debug
         env:
         - name: SUBSPACE_HTTP_ADDR
           value: :8080
